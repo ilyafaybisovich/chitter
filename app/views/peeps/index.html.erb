@@ -1,3 +1,10 @@
-No peeps peeped yet. Be the first!
+<% if @peeps.any? %>
+  <% @peeps.sort_by { |peep| peep.created_at }.reverse!.each do |peep| %>
+    <%= peep.text %><br>
+    <%= peep.created_at %><br>
+  <% end %>
+<% else %>
+  No peeps peeped yet. Be the first!
+<% end %>
 
 <%= link_to 'Add a peep', new_peep_path %>
